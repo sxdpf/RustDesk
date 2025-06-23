@@ -1,0 +1,26 @@
+1、下载文件
+	下载 Rustdesk ZIP 包，解压至rustdesk文件夹
+	下载 hbb_common ZIP 包，解压至 rustdesk\libs\hbb_common 文件夹
+
+2、修改文件
+rustdesk\.gitmoduls	注释掉第三行，如：# url = https://github.com/rustdesk/hbb_common
+
+
+
+libs\hbb_common\src\config.rs 	#修改该文件的101-102行，分别是服务器及KEY
+
+src\common.rs 	#993行替换API地址
+
+flutter\lib\desktop\pages\connection_page.dart	#81-110行代码替换如下：
+
+    Widget setupServerWidget() => Flexible(
+       child: Offstage(
+         offstage: !(!_svcStopped.value &&
+             stateGlobal.svcStatus.value == SvcStatus.ready &&
+             _svcIsUsingPublicServer.value),
+         child: Row(
+           crossAxisAlignment: CrossAxisAlignment.center,
+           children: [], 
+         ),
+       ),
+     );
