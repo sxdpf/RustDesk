@@ -1,17 +1,15 @@
-1、下载文件
+一、下载文件
 	下载 Rustdesk ZIP 包，解压至rustdesk文件夹
 	下载 hbb_common ZIP 包，解压至 rustdesk\libs\hbb_common 文件夹
 
-2、修改文件
-rustdesk\.gitmoduls	注释掉第三行，如：# url = https://github.com/rustdesk/hbb_common
+二、修改文件
+1、rustdesk\.gitmoduls	注释掉第三行，如：# url = https://github.com/rustdesk/hbb_common
 
+2、libs\hbb_common\src\config.rs 	#修改该文件的101-102行，分别是服务器及KEY
 
+3、src\common.rs 	#1007行替换API地址    原文格式："http://****  ".to_owned()
 
-libs\hbb_common\src\config.rs 	#修改该文件的101-102行，分别是服务器及KEY
-
-src\common.rs 	#993行替换API地址
-
-flutter\lib\desktop\pages\connection_page.dart	#81-110行代码替换如下：
+4、flutter\lib\desktop\pages\connection_page.dart	#81-110行代码替换如下：
 
     Widget setupServerWidget() => Flexible(
        child: Offstage(
@@ -24,3 +22,19 @@ flutter\lib\desktop\pages\connection_page.dart	#81-110行代码替换如下：
          ),
        ),
      );
+
+5、添加缺失文件
+	libs/portable/src/res/label.png		# label.png 文件可在原作者原路径下可找到，须单独下载。
+
+
+三、如果工作流程运行失败，可点开失败的流程：
+
+	run-flutter-nightly-build
+		x86_64-pc-windows-msvc
+			Publish Release
+				🎉 Release ready at https://…… 即可找到
+
+		
+
+
+
